@@ -1,0 +1,372 @@
+/* =====================
+   VARIÁVEIS E RESET
+   ===================== */
+
+:root {
+    --bg: #04060f;
+    --bg2: #080d1c;
+    --surface: #0d1225;
+    --border: #1a2240;
+    --accent: #c8a96e;
+    --accent2: #4f8ef7;
+    --text: #d8dff0;
+    --muted: #6b7899;
+    --white: #f0f4ff;
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-mono: 'Space Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* =====================
+   ESTRELAS DE FUNDO
+   ===================== */
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0;
+    animation: twinkle linear infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* =====================
+   HERO
+   ===================== */
+
+header.hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, #0d1f4a55 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 70% 60%, #1a0a3a44 0%, transparent 60%);
+}
+
+.hero-inner {
+    max-width: 760px;
+}
+
+.hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.hero-sub {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 3rem;
+}
+
+.hero-line {
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+    margin: 0 auto;
+    opacity: 0.6;
+}
+
+/* =====================
+   MAIN
+   ===================== */
+
+main {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+}
+
+/* =====================
+   INTRO
+   ===================== */
+
+.intro {
+    max-width: 680px;
+    margin: 0 auto 5rem;
+    text-align: center;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.intro strong {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* =====================
+   GRID DE FATOS
+   ===================== */
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1.5px solid var(--border);
+    margin-bottom: 6rem;
+}
+
+.fact {
+    background: var(--bg2);
+    padding: 2.2rem 2rem;
+    transition: background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.fact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+.fact:hover {
+    background: var(--surface);
+}
+
+.fact:hover::before {
+    background: var(--accent2);
+}
+
+.fact--large {
+    grid-column: span 2;
+}
+
+.fact--wide {
+    grid-column: span 2;
+}
+
+.fact--accent {
+    background: #0a1535;
+}
+
+.fact--accent:hover {
+    background: #0e1a40;
+}
+
+.fact-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+}
+
+.fact-number sup {
+    font-size: 0.45em;
+    vertical-align: super;
+}
+
+.fact-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+}
+
+.fact-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.fact-desc strong {
+    color: var(--accent);
+}
+
+/* =====================
+   CITAÇÃO
+   ===================== */
+
+.quote-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-bottom: 5rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+blockquote p {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+    max-width: 720px;
+    margin: 0 auto 1rem;
+}
+
+blockquote cite {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-style: normal;
+}
+
+/* =====================
+   CURIOSIDADES
+   ===================== */
+
+.section-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+}
+
+.curiosity-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1.5px solid var(--border);
+}
+
+.curiosity-list li {
+    padding: 1.4rem 1.8rem;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.25s;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.curiosity-list li:last-child {
+    border-bottom: none;
+}
+
+.curiosity-list li:hover {
+    background: var(--surface);
+    color: var(--text);
+}
+
+.tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--accent2);
+    padding: 2px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+
+footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+}
+
+/* =====================
+   RESPONSIVO
+   ===================== */
+
+@media (max-width: 700px) {
+    .facts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fact--large,
+    .fact--wide {
+        grid-column: span 1;
+    }
+}
